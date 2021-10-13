@@ -1,0 +1,133 @@
+[{
+    "nombre":"iPhone SE <br> (128 GB) - Negro",
+    "categoria": "celulares",
+    "descripcion":"Nuevo",
+    "id":2001,
+    "precio":178.965,
+    "stock":20,
+    "imagen":"https://tienda.personal.com.ar/_next/image?url=https%3A%2F%2Fcbff-teco-strapi-cms-pro.s3.amazonaws.com%2FPAPSW_128_I_01_89e79b3974.png&w=640&q=75",
+    "envio":1,
+    "starts":5,
+    "cuotas":"true"
+    },{
+    "nombre":"Samsung Galaxy S21 5G",
+    "categoria": "celulares",
+    "descripcion":"Nuevo",
+    "id":2002,
+    "precio":143.999,
+    "stock":30,
+    "imagen":"https://tienda.personal.com.ar/_next/image?url=https%3A%2F%2Fcbff-teco-strapi-cms-pro.s3.amazonaws.com%2FGalaxy_S21_Phantom_Violet_Frente_min_220494c47c.png&w=640&q=75",
+    "envio": 0,
+    "starts": 4,
+    "cuotas": "true"
+     },{
+    "nombre": "Samsung Galaxy S20 EL",                                       
+    "categoria":"celulares",
+    "descripcion":"Nuevo",
+    "id":2003,
+    "precio":112.358,
+    "stock":40,
+    "imagen":"https://tienda.personal.com.ar/_next/image?url=https%3A%2F%2Fcbff-teco-strapi-cms-pro.s3.amazonaws.com%2FPMTEDGGMN_01_65875bb615.png&w=640&q=75",
+    "envio":1,
+    "starts":3,
+    "cuotas":"false"
+    },{
+    "nombre":"IPhone 12 <br> Pro (128 GB) - Grafito",                                        
+    "categoria": "celulares",
+    "descripcion":"Nuevo",
+    "id":2004,
+    "precio":271.399,
+    "stock":15,
+    "imagen":"https://tienda.personal.com.ar/_next/image?url=https%3A%2F%2Fcbff-teco-strapi-cms-pro.s3.amazonaws.com%2Fi_Phone_12_Pro_Max_Graftio_min_812b1b112c.png&w=640&q=75",
+    "envio": 0,
+    "stars": 5,
+    "cuotas":"true"
+    },{
+    "nombre":"Motorola G20 - Azul Cielo",                                         
+    "categoria": "celulares",
+    "descripcion":"Nuevo",
+    "id": 2005,
+    "precio":27.963,
+    "stock":50,
+    "imagen":"https://tienda.personal.com.ar/_next/image?url=https%3A%2F%2Fcbff-teco-strapi-cms-pro.s3.amazonaws.com%2FMoto_G20_Azul_Cielo_Front_min_352912587d.png&w=640&q=75",
+    "envio":1,
+    "starts":3,
+    "cuotas":"false"
+     },{
+    "nombre":"Motorola Moto E6i",                                         
+    "categoria": "celulares",
+    "descripcion":"Nuevo",
+    "id":2006,
+    "precio":17.499,
+    "stock":30,
+    "imagen":"https://tienda.personal.com.ar/_next/image?url=https%3A%2F%2Fcbff-teco-strapi-cms-pro.s3.amazonaws.com%2FPMTMRE_6_IN_01_1dc13aceb9.png&w=640&q=75",
+    "envio":0,
+    "starts":2,
+    "cuotas":"false"
+     },{
+    "nombre":"Motorola Moto G30 - Lila",                                         
+    "categoria": "celulares",
+    "descripcion":"Nuevo",
+    "id":2007,
+    "precio":34999,
+    "stock":50,
+    "imagen":"https://tienda.personal.com.ar/_next/image?url=https%3A%2F%2Fcbff-teco-strapi-cms-pro.s3.amazonaws.com%2FPMTLPG_30_N_01_1e4b3d74a7.png&w=640&q=75",
+    "envio":1,
+    "starts":5,
+    "cuotas":"false"
+     },{
+    "nombre":"Motorola Moto G100",                                         
+    "categoria": "celulares",
+    "descripcion":"Nuevo",
+    "id":2008,
+    "precio":89999,
+    "stock":"50",
+    "imagen":"https://tienda.personal.com.ar/_next/image?url=https%3A%2F%2Fcbff-teco-strapi-cms-pro.s3.amazonaws.com%2FPMTANG_1_HN_01_883a210555.png&w=640&q=75",
+    "envio":1,
+    "starts":5,
+    "cuotas":"true"
+     },{
+    "nombre":"LG K22 Plus - Azul",                                         
+    "categoria": "celulares",
+    "descripcion":"Nuevo",
+    "id":2009,
+    "precio":19.999,
+    "stock":100,
+    "imagen":"https://tienda.personal.com.ar/_next/image?url=https%3A%2F%2Fcbff-teco-strapi-cms-pro.s3.amazonaws.com%2FPLGTK_22_PN_01_f39d793437.png&w=640&q=75",
+    "envio":1,
+    "starts":3,
+    "cuotas":"false"
+    },{
+    "nombre":"LG K61 - Azul",                                         
+    "categoria":"celulares",
+    "descripcion":"Nuevo",
+    "id":2010,
+    "precio":29.9999,
+    "stock":"40",
+    "imagen":"https://tienda.personal.com.ar/_next/image?url=https%3A%2F%2Fcbff-teco-strapi-cms-pro.s3.amazonaws.com%2FPLGLBK_61_N_01_1bd696219d.png&w=640&q=75",
+    "envio":1,
+    "starts":2,
+    "cuotas":"false"
+    },{
+    "nombre": "LG K51s - Titanium",                                      
+    "categoria": "celulares",
+    "descripcion":"Nuevo",
+    "id":2011,
+    "precio":25999,
+    "stock":10,
+    "imagen":"https://tienda.personal.com.ar/_next/image?url=https%3A%2F%2Fcbff-teco-strapi-cms-pro.s3.amazonaws.com%2FPLGTK_51_SN_01_bd5f4a134f.png&w=640&q=75",
+    "envio":0,
+    "starts":3,
+    "cuotas":"true"
+    },{
+    "nombre":"LG Velvet - Aurora Gray",                                        
+    "categoria": "celulares",
+    "descripcion":"Nuevo",
+    "id":2012,
+    "precio":59999,
+    "stock":30,
+    "imagen":"https://tienda.personal.com.ar/_next/image?url=https%3A%2F%2Fcbff-teco-strapi-cms-pro.s3.amazonaws.com%2FPLGW_910_BN_01_20ae596e13.png&w=640&q=75",
+    "envio":0,
+    "starts":3,
+    "cuotas":"true"
+    }]                                             

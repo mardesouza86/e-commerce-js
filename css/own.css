@@ -1,0 +1,18 @@
+.hand {
+    cursor:pointer;
+}
+
+.inputQty {
+    border:none;
+}
+
+.deleteCartProduct {
+font-size: 2em;
+list-style: none;
+text-decoration: none;
+color: red;
+}
+
+tbody {
+    font-size: 17px; }
+
