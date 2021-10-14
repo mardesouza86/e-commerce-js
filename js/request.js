@@ -9,12 +9,7 @@ const nListaDeProductos  = document.getElementById('listaProductos')
 const emptyCartBtn          = document.getElementById('emptyCart') 
 // button Paid Order
 const processRequestBtn     = document.getElementById('salesProcess') 
-// new Products node
-const nNewArrivalsMenu  = document.getElementById('newMenu')
-// popular Products node
-const nPopularProductsMenu  = document.getElementById('newMenu')
-// all Products node
-const nAllProductsMenu      = document.getElementById('newMenu')
+
 
 loadListenerEvents() 
 
@@ -25,20 +20,21 @@ function loadListenerEvents() {
 
     nCartDiv.addEventListener("click", (event) => {
 
-        const expr = event.target.getAttribute('name');
-        switch (expr) {
-          case 'qty':        
-            cart.actualizaCantidadLS(
-                    event.target.getAttribute('data-id'),
-                    event.target.value
-                    )            
-            break;
-          case 'deleteRow':
-            cart.borrarProductoCarro(event)
-            break;
-        }
+      const expr = event.target.getAttribute('name');
+      switch (expr) {
+        case 'qty':        
+          cart.actualizaCantidad(
+                  event.target.getAttribute('data-id'),
+                  event.target.value
+                  )            
+          break;
+        case 'deleteRow':
+          cart.borrarProductoCarro(event)
+          break;
+      }
 
-      })
+    })
+
 
     // nNewArrivalsMenu.addEventListener("click",(event) => {
     //     filterProducts('new')

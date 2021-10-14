@@ -1,19 +1,21 @@
 // Defino objeto de productos
 class Producto {
-    constructor(nombre, imagen, descripcion, stock, cantidad, id, envios, starts, ofertas, cuotas) {
+    constructor(nombre, imagen, descripcion, stock, id, envios, starts, ofertas, cuotas, iphone, samsung, motorola, lg) {
       this.nombre = nombre;
       this.imagen = imagen;
       this.descripcion = descripcion;
       this.stock = stock;
-      this.cantidad = cantidad;
       this.id = id;
       this.envios = envios;
       this.starts = starts;
       this.ofertas = ofertas;
       this.cuotas = cuotas;
+      this.iphone = iphone;
+      this.samsung = samsung;
+      this.motorola= motorola;
+      this.lg = lg;
     }
 }
-
 var todosLosProductos = []
 // uso fetch para leer archivo json local
 fetch('/json/productos.json', {
@@ -21,7 +23,7 @@ fetch('/json/productos.json', {
 })
     .then(respuesta => respuesta.json())
     .then(arrayProductos => {
-        todosLosProductos = arrayProductos.slice(1, arrayProductos.length)
+        todosLosProductos = arrayProductos.slice(0, arrayProductos.length)
         MostrarHTML(arrayProductos)   
     })
 
@@ -32,7 +34,7 @@ function MostrarHTML(arrayProductos)  {
     let starts  = ""
     let cuotas = ""
     let envios  = ""
-    let ofertas = ""
+    
 
     // uso forEach para actualizar el DOM
     arrayProductos.forEach(producto => {
@@ -45,28 +47,24 @@ function MostrarHTML(arrayProductos)  {
             }   
         }
         if (producto.cuotas) {
-            cuotas = `<img src="./img/images.png" alt="New Product">`
+            cuotas = `<img src="/img/ahora12.jfif" alt="ahora12" width=100>`
         } else {
-            cuotas = ''
-                }
-          if (producto.cuotas) {
-        ofertas = `<img src="./img/images.png" alt="New Product">`
-        } else {
-        ofertas = ''
+            cuotas = '<img src="/img/cuotas.jpg" alt="cuotas" width=90>'
         }
+
         envios = ''
         for (let i = 0; i<1; i++) {
-            if(i < producto.starts) {
+            if(i < producto.envio) {
                 envios += `<p class="envios">Llega gratis <span class="enviosBold">mañana</span></p>`
             } else {
-                envios += `<div class="bi-star"></div>`
+                envios += `<p class="envios">Envio con Cargo <span class="enviosBold"></br>Envio 24 Horas</span></p>`
             }   
         }
         mostrar += `<div class= "col mb-5" >
         <div class="card h-100">
             <!--Producto Full-->
             <div class="badge bg-success text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-            FULL
+            ⚡FULL
         </div>
         <!-- Product image-->
         <img src= ${producto.imagen}
@@ -79,25 +77,24 @@ function MostrarHTML(arrayProductos)  {
                 <hr>
                 <!-- Product details-->
                     <ul class="p-0" >
-                        <li>${producto.descripcion}</li>
+                        <li class = "description">| ${producto.descripcion} |</li>
                     </ul>
-                    <ul class="moreDetails"
-                        <li>${producto.cuotas}</li>
-                        <li>${producto.ofertas}</li>     
-                    </ul>
+                    <!-- Cuotas-->
+                    <div class="moreDetails" "d-flex justify-content-center small text-warning mb-2">
+                        ${cuotas}
+                        </div>                     
                 <!-- Product reviews-->
                     <div class="d-flex justify-content-center small text-warning mb-2">
                         ${starts}
                     </div>
                 <!-- Product price-->
-                <h5><span>u$$${producto.precio}</span></h5>
+                <h5><span>$${producto.precio}</span></h5>
                 ${envios}
             </div>
         </div>
         <!-- Product actions-->
         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto addToCart" data-id="${producto.id}" href="#">Add to
-                cart</a></div>
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto addToCart" data-id="${producto.id}" href="#">Agregar al Carrito</a></div>
             </div>
         </div>
     </div >   
@@ -110,24 +107,32 @@ function MostrarHTML(arrayProductos)  {
     contenedor.innerHTML = mostrar
 }
 
-function filterProducts(param){
-    let result = []
-    switch (param) {
-        case 'new':     
-        console.log('entro al new') 
-            result = todosLosProductos.filter(producto => producto.productoNuevo===true);
+function filtroProductos(parametros){
+    let resultados = []
+    switch (parametros) {
+        case 'motorola':     
+        console.log('filtro por motorola') 
+            resultados = todosLosProductos.filter(producto => producto.motorola===true);
             break
+            case 'samsung':     
+            console.log('filtro por samsung') 
+                resultados = todosLosProductos.filter(producto => producto.samsung===true);
+                break
+                case 'lg':     
+                console.log('filtro por lg') 
+                    resultados = todosLosProductos.filter(producto => producto.lg===true);
+                    break
         case 'all':      
-        console.log('entro al all') 
-            result = todosLosProductos;
+        console.log('filtro por all') 
+            resultados = todosLosProductos;
             break
-        case 'popular':
-            console.log('entro al popular') 
-            result = todosLosProductos.filter(producto => producto.productoMejor===true);
+        case 'iphone':
+            console.log('filtro por iphone') 
+            resultados = todosLosProductos.filter(producto => producto.iphone===true);
             break
     }
-    console.log(result)
-    MostrarHTML(result) 
+    console.log(resultados)
+    MostrarHTML(resultados) 
 }
 
 
@@ -144,23 +149,37 @@ $(document).ready(function () {
         }
     });
 
-    let titulo = $('.fw-bolder')
 
-    $(".title1").hide();
-    $(".title2").hide();
-    $(".title1").slideDown(2000, function () {
-        $(".title2").fadeIn(3000, function () {
-            $(".title2").animate({
-                marginLeft: '300px'
-            }, 2000)
-                .animate({
-                    marginLeft: '-600px'
-                }, 2000)
-                .animate({
-                    marginLeft: '0px'
-                }, 2000)
-        });  
-    });
-   
+
 });
 
+
+
+function paid() {
+
+    // information to send
+    const elemento = {
+        "items": [
+            {
+                "title": "Dummy Title",
+                "description": "Dummy description",
+                "picture_url": "http://www.myapp.com/myimage.jpg",
+                "category_id": "cat123",
+                "quantity": 1,
+                "currency_id": "ARS",
+                "unit_price": 10
+            }
+        ]
+    }
+
+
+    fetch("https://api.mercadopago.com/checkout/preferences", {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        headers: {
+            'Authorization': ' Bearer TEST-684697565820871-092413-c2603593e9fb68df39164dbff6898810-93759575',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(elemento)
+    });
+
+}

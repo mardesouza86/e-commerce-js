@@ -13,7 +13,7 @@ class Cart {
                         <img src="${producto.imagen}" width=100>
                     </td>
                     <td>${producto.nombre}</td>      
-                    <input class="inputQty" type="number" size="2" min="1" max="10" name="qty" data-id="${producto.id}" name="qty" value=${producto.cantidad}>
+                    <input class="inputQty" type="number" size="2" min="1" max="10" name="qty" data-id="${producto.id}" name="qty" value=${producto.qty}>
                     <td>${producto.precio}</td>
                     <td>
                         <a href="#" class="deleteCartProduct fas fa-times-circle" data-id="${producto.id}" name="deleteRow"></a>
@@ -23,6 +23,7 @@ class Cart {
         }
         )
         document.getElementById("contador").innerHTML = productosLS.length
+        this. showTotalAmount()
     }
    
     // delete product
@@ -33,36 +34,38 @@ class Cart {
             productoId
         if (e.target.classList.contains('deleteCartProduct')) {
             producto = e.target.parentElement.parentElement
+            console.log(producto)
             productoId = producto.querySelector('a').getAttribute('data-id')
             e.target.parentElement.parentElement.remove()
             document.getElementById("contador").innerHTML = cartQty - 1
-            // lo tuve que ocmentar porque no funciona da error de funcion no definida
-            borrarProductoLS(productoId)
+            eliminarProductoLS(productoId)
+            this. showTotalAmount()
         }    
     }
 
     // Obtain products in LS
     obtenerProductoLS() {
-        let productoLS
+        let productosLS
         // verifiy if exists products in LS
         if (localStorage.getItem('products') === null) {
-            productoLS = []
+            productosLS = []
         }
         else {
-            productoLS = JSON.parse(localStorage.getItem('products'))
+            productosLS = JSON.parse(localStorage.getItem('products'))
         }
-        return productoLS
+        return productosLS
     }
 
     // Update product Qty in LS 
-    actualizaCantidadLS(id,value) {
+    actualizaCantidad(id,value) {
         const productosLS = this.obtenerProductoLS()
         productosLS.forEach(function (producto) {
             if ( producto.id === id ) {
-                producto.cantidad = value
+                producto.qty == value
                 localStorage.setItem('products', JSON.stringify(productosLS))
             }
         })
+        this. showTotalAmount()
     }
 
     // add product to cart
@@ -73,6 +76,7 @@ class Cart {
             //Enviamos el producto seleccionado para tomar sus datos
             this.obtenerDatosProducto(producto)
         }
+        this.showTotalAmount() 
     }
 
     // read product data
@@ -82,20 +86,18 @@ class Cart {
             nombre: producto.querySelector('h5').textContent,
             precio: producto.querySelector('h5 span').textContent,
             id: producto.querySelector('a').getAttribute('data-id'),
-            cantidad: 1
+            qty: 1
         }
 
         let productosLS
         productosLS = this.obtenerProductoLS()
-        productosLS.forEach(function (productoLS) {
-            if (productoLS.id === productoInfo.id) {
-                productosLS = productoLS.id
+        productosLS.forEach(function (productosLS) {
+            if (productosLS.id === productoInfo.id) {
+                productosLS = productosLS.id
             }
         })
 
         if (productosLS === productoInfo.id) {
-            
-            //ver como acumulo
         }
         else {
             this.AddCart(productoInfo)
@@ -120,6 +122,7 @@ class Cart {
         nTableBody.appendChild(row)
         document.getElementById("contador").innerHTML = cartQty + 1
         this.guardarProductoLS(producto)
+        this. showTotalAmount()
     }
 
     // delete all products in Cart
@@ -131,6 +134,7 @@ class Cart {
         // clear LS
         this.vaciarLS()
         document.getElementById("contador").innerHTML = 0
+        document.getElementById("totalCart").innerHTML = 0
         return false
     }
 
@@ -151,7 +155,25 @@ class Cart {
     }
 
 
+    calcTotalAmount() {
+
+        let productoLS = cart.obtenerProductoLS()
+        let totalAmount = 0;
+    
+        productoLS.forEach(function(producto,index){
+            totalAmount = totalAmount + producto.precio * producto.qty
+     
+        })
+        return totalAmount
+    }
+
+    showTotalAmount() {
+        const totalAmount = this.calcTotalAmount()
+        document.getElementById("totalCart").innerHTML = totalAmount
+    }
 }
+
+
 
 
 function eliminarProductoLS(productoId) {
@@ -175,3 +197,4 @@ function actualizarProductoLS(productoId) {
     })
     localStorage.setItem('products',JSON.stringify(productoLS))
 }
+
